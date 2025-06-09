@@ -1,8 +1,8 @@
 .PHONY: all install chkversion
 
-SRCDIR=$(subst /macOS,,$(realpath .))
+SRCDIR=$(subst /Linux,,$(realpath .))
 ROOT:=$(realpath ../..)
-INSTALLDIR = $(ROOT)/macOS/Install
+INSTALLDIR = $(ROOT)/Linux/Install
 
 CFLAGS = -O3 -Wall -I$(SRCDIR) -I$(ROOT)/hishared
 VPATH = $(SRCDIR):$(ROOT)/hishared
@@ -26,6 +26,9 @@ _version.o: _version.h _appinfo.h _version.c appinfo.h
 
 $(TARGET): $(OBJS) _version.o
 	gcc -o $@ $^
+
+$(INSTALLDIR):
+	mkdir -p $@
 
 clean:
 	rm -f *.o 

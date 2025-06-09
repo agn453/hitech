@@ -27,6 +27,9 @@ _version.o: _version.h _appinfo.h _version.c appinfo.h
 $(TARGET): $(OBJS) _version.o
 	gcc -o $@ $^
 
+$(INSTALLDIR):
+	mkdir -p $@
+
 clean:
 	rm -f *.o 
 
